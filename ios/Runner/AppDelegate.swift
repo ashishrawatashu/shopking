@@ -3,7 +3,7 @@ import Flutter
 import Firebase
 import flutter_localnotifications
 
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate {
   let flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin()
 

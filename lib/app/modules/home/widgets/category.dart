@@ -15,7 +15,8 @@ class CategoryWidget extends StatelessWidget {
     final categoryController = Get.find<CategoryController>();
 
     return Container(
-      height: 120.h,
+
+      height: 60.h,
       width: double.infinity,
       color: AppColor.whiteColor, // white hobe
       child: Obx(() {
@@ -36,8 +37,9 @@ class CategoryWidget extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    height: 85.h,
-                    width: 72.w,
+                    height: 50.h,
+                    width: 50.w,
+                    padding: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                       color: AppColor.whiteColor,
                       borderRadius: BorderRadius.circular(8.r),
@@ -51,47 +53,33 @@ class CategoryWidget extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        CachedNetworkImage(
-                          imageUrl: category[index].thumb.toString(),
-                          imageBuilder: (context, imageProvider) => Container(
-                            height: 50.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(8.r),
-                                  topRight: Radius.circular(8.r)),
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
+                        Container(
+                          padding: EdgeInsets.all(3.r), // White padding
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white, // White padding color
+                            border: Border.all(color: Colors.black, width: 2), // Outer black ring
+                          ),
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl: category[index].thumb.toString(),
+                              imageBuilder: (context, imageProvider) => Container(
+                                height: 30.h,
+                                width: 30.h, // Ensure it remains circular
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            height: 22.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: AppColor.whiteColor,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8.r),
-                                bottomRight: Radius.circular(8.r),
-                              ),
-                            ),
-                            child: Center(
-                              child: TextWidget(
-                                text: category[index].name,
-                                textAlign: TextAlign.center,
-                                color: AppColor.titleTextColor,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        )
                       ],
                     ),
-                  ),
+                  )
+                  ,
                 ),
               ),
             );

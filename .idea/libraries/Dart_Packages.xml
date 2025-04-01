@@ -884,6 +884,13 @@
             </list>
           </value>
         </entry>
+        <entry key="smooth_page_indicator">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/smooth_page_indicator-1.2.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="source_span">
           <value>
             <list>
@@ -1282,6 +1289,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/rxdart-0.28.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shimmer-3.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/smooth_page_indicator-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/source_span-1.10.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sprintf-7.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite-2.4.2/lib" />

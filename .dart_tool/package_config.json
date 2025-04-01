@@ -758,6 +758,12 @@
       "languageVersion": "3.7"
     },
     {
+      "name": "smooth_page_indicator",
+      "rootUri": "file:///Users/ashishrawat/.pub-cache/hosted/pub.dev/smooth_page_indicator-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///Users/ashishrawat/.pub-cache/hosted/pub.dev/source_span-1.10.1",
       "packageUri": "lib/",
@@ -998,7 +1004,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-30T16:17:50.875803Z",
+  "generated": "2025-03-31T05:57:44.239277Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/ashishrawat/Documents/flutter",

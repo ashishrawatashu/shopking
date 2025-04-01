@@ -1,6 +1,6 @@
 class ApiList {
-  static const baseUrl = "https://demo.shopking.dev";
-  static const licenseCode = "i9u99tt4-f0w6-71w7-8394-y968t02516r11";
+  static const baseUrl = "https://crm.fornisseur.in";
+  static const licenseCode = "a0t04ux2-w0v5-47k0-5418-r009c12078i360922";
   static const login = "$baseUrl/api/auth/login";
   static const forgotPassword = "$baseUrl/api/auth/forgot-password";
   static const resendForgotOTPPhone =
