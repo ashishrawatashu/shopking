@@ -8,6 +8,7 @@ import 'package:shopperz/widgets/textwidget.dart';
 
 import '../../../../config/theme/app_color.dart';
 import '../../../../utils/svg_icon.dart';
+import '../../../../widgets/custom_text.dart';
 import '../../../../widgets/textwidget_with_currency.dart';
 
 class ProductWidget extends StatelessWidget {
@@ -48,14 +49,14 @@ class ProductWidget extends StatelessWidget {
       child: Container(
         width: 156.w,
         decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(12.r),
+          // color: AppColor.whiteColor,
+          // borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.04),
-                offset: const Offset(0, 0),
-                blurRadius: 7.r,
-                spreadRadius: 0),
+            // BoxShadow(
+            //     color: Colors.black.withOpacity(0.04),
+            //     offset: const Offset(0, 0),
+            //     blurRadius: 7.r,
+            //     spreadRadius: 0),
           ],
         ),
         child: Padding(
@@ -70,12 +71,43 @@ class ProductWidget extends StatelessWidget {
                     imageUrl: productImage.toString(),
                     imageBuilder: (context, imageProvider) => Container(
                       height: 160.h,
-                      width: 140.w,
+                      width: 150.w,
                       decoration: BoxDecoration(
                         color: AppColor.whiteColor,
                         borderRadius: BorderRadius.circular(8.r),
                         image: DecorationImage(
                             image: imageProvider, fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 0, // Remove left padding to center it properly
+                    right: 0, // Remove right padding to center it properly
+                    bottom: 6.h, // Move it to the bottom
+                    child: InkWell(
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          color: AppColor.whiteColor
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(SvgIcon.cart2,
+                              height: 20.h,
+                              width: 20.w,),
+                            SizedBox(width: 5.w,),
+                            CustomText(
+                              text: "Add".tr,
+                              size: 16.sp,
+                              weight: FontWeight.w700,
+                              color: AppColor.blackColor,
+                            )
+
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -88,59 +120,59 @@ class ProductWidget extends StatelessWidget {
                       children: [
                         flashSale == true
                             ? Container(
-                                height: 18.h,
-                                width: 57.w,
-                                decoration: BoxDecoration(
-                                  color: AppColor.blueColor,
-                                  borderRadius: BorderRadius.circular(9.r),
-                                ),
-                                child: Center(
-                                  child: TextWidget(
-                                    text: 'Flash Sale'.tr,
-                                    color: AppColor.whiteColor,
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
+                          height: 18.h,
+                          width: 57.w,
+                          decoration: BoxDecoration(
+                            color: AppColor.blueColor,
+                            borderRadius: BorderRadius.circular(9.r),
+                          ),
+                          child: Center(
+                            child: TextWidget(
+                              text: 'Flash Sale'.tr,
+                              color: AppColor.whiteColor,
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
                             : const SizedBox(),
                         wishlist == false
                             ? InkWell(
-                                onTap: favTap,
-                                child: Container(
-                                  height: 18.r,
-                                  width: 18.r,
-                                  decoration: BoxDecoration(
-                                    color: AppColor.whiteColor,
-                                    borderRadius: BorderRadius.circular(18.r),
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      SvgIcon.heart,
-                                      height: 12.h,
-                                      width: 12.w,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : InkWell(
-                                onTap: favTap,
-                                child: Container(
-                                  height: 18.r,
-                                  width: 18.r,
-                                  decoration: BoxDecoration(
-                                    color: AppColor.whiteColor,
-                                    borderRadius: BorderRadius.circular(18.r),
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      SvgIcon.filledHeart,
-                                      height: 12.h,
-                                      width: 12.w,
-                                    ),
-                                  ),
-                                ),
+                          onTap: favTap,
+                          child: Container(
+                            height: 18.r,
+                            width: 18.r,
+                            decoration: BoxDecoration(
+                              color: AppColor.whiteColor,
+                              borderRadius: BorderRadius.circular(18.r),
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                SvgIcon.heart,
+                                height: 12.h,
+                                width: 12.w,
                               ),
+                            ),
+                          ),
+                        )
+                            : InkWell(
+                          onTap: favTap,
+                          child: Container(
+                            height: 18.r,
+                            width: 18.r,
+                            decoration: BoxDecoration(
+                              color: AppColor.whiteColor,
+                              borderRadius: BorderRadius.circular(18.r),
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                SvgIcon.filledHeart,
+                                height: 12.h,
+                                width: 12.w,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   )
@@ -155,8 +187,8 @@ class ProductWidget extends StatelessWidget {
                   color: AppColor.textColor,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               SizedBox(

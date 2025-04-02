@@ -348,168 +348,164 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? const ProductShimmer()
                     : popularProductController
                     .popularModel.value.data!.isNotEmpty
-                    ? Padding(
-                  padding: EdgeInsets.only(right: 16.w),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 16.w),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          children: [
-                            TitleWidget(text: "Most Popular".tr),
-                            SeeAllButton(
-                              onTap: () async {
-                                Get.to(
-                                      () => const ProductlistScreen(
-                                    id: 5,
-                                    title: "Most Popular",
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
+                    ? Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 16.w,left: 16.w),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              TitleWidget(text: "Most Popular".tr),
+                              SeeAllButton(
+                                onTap: () async {
+                                  Get.to(
+                                        () => const ProductlistScreen(
+                                      id: 5,
+                                      title: "Most Popular",
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16.h),
-                      StaggeredGrid.count(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 16.h,
-                        crossAxisSpacing: 16.w,
-                        children: [
-                          for (int index = 0;
-                          index <
-                              popularProductController
-                                  .popularModel
-                                  .value
-                                  .data!
-                                  .length;
-                          index++)
-                            ProductWidget(
-                              onTap: () {
-                                Get.to(() => ProductDetailsScreen(
-                                    individualProduct:
+                        SizedBox(height: 16.h),
+                        StaggeredGrid.count(
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 10.h,
+                          children: [
+                            for (int index = 0;
+                            index <
+                                popularProductController
+                                    .popularModel
+                                    .value
+                                    .data!
+                                    .length;
+                            index++)
+                              ProductWidget(
+                                onTap: () {
+                                  Get.to(() => ProductDetailsScreen(
+                                      individualProduct:
+                                      popularProductController
+                                          .popularModel
+                                          .value
+                                          .data?[index]));
+                                },
+                                wishlist: wishListController.favList
+                                    .contains(
                                     popularProductController
                                         .popularModel
                                         .value
-                                        .data?[index]));
-                              },
-                              wishlist: wishListController.favList
-                                  .contains(
-                                  popularProductController
-                                      .popularModel
-                                      .value
-                                      .data![index]
-                                      .id!) ||
-                                  popularProductController
-                                      .popularModel
-                                      .value
-                                      .data?[index]
-                                      .wishlist ==
-                                      true
-                                  ? true
-                                  : false,
-                              favTap: () async {
-                                if (box.read('isLogedIn') !=
-                                    false) {
-                                  if (popularProductController
-                                      .popularModel
-                                      .value
-                                      .data?[index]
-                                      .wishlist ==
-                                      true) {
-                                    await wishListController
-                                        .toggleFavoriteFalse(
-                                        popularProductController
-                                            .popularModel
-                                            .value
-                                            .data![index]
-                                            .id!);
-
-                                    wishListController.showFavorite(
-                                        popularProductController
-                                            .popularModel
-                                            .value
-                                            .data![index]
-                                            .id!);
-                                  }
-                                  if (popularProductController
-                                      .popularModel
-                                      .value
-                                      .data?[index]
-                                      .wishlist ==
+                                        .data![index]
+                                        .id!) ||
+                                    popularProductController
+                                        .popularModel
+                                        .value
+                                        .data?[index]
+                                        .wishlist ==
+                                        true
+                                    ? true
+                                    : false,
+                                favTap: () async {
+                                  if (box.read('isLogedIn') !=
                                       false) {
-                                    await wishListController
-                                        .toggleFavoriteTrue(
-                                        popularProductController
-                                            .popularModel
-                                            .value
-                                            .data![index]
-                                            .id!);
+                                    if (popularProductController
+                                        .popularModel
+                                        .value
+                                        .data?[index]
+                                        .wishlist ==
+                                        true) {
+                                      await wishListController
+                                          .toggleFavoriteFalse(
+                                          popularProductController
+                                              .popularModel
+                                              .value
+                                              .data![index]
+                                              .id!);
 
-                                    wishListController.showFavorite(
-                                        popularProductController
-                                            .popularModel
-                                            .value
-                                            .data![index]
-                                            .id!);
+                                      wishListController.showFavorite(
+                                          popularProductController
+                                              .popularModel
+                                              .value
+                                              .data![index]
+                                              .id!);
+                                    }
+                                    if (popularProductController
+                                        .popularModel
+                                        .value
+                                        .data?[index]
+                                        .wishlist ==
+                                        false) {
+                                      await wishListController
+                                          .toggleFavoriteTrue(
+                                          popularProductController
+                                              .popularModel
+                                              .value
+                                              .data![index]
+                                              .id!);
+
+                                      wishListController.showFavorite(
+                                          popularProductController
+                                              .popularModel
+                                              .value
+                                              .data![index]
+                                              .id!);
+                                    }
+                                  } else {
+                                    Get.to(
+                                            () => const SignInScreen());
                                   }
-                                } else {
-                                  Get.to(
-                                          () => const SignInScreen());
-                                }
-                              },
-                              productImage:
-                              popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .cover!,
-                              title: popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .name,
-                              rating: popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .ratingStar
-                                  .toString(),
-                              currentPrice:
-                              popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .currencyPrice,
-                              discountPrice:
-                              popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .discountedPrice,
-                              textRating: popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .ratingStarCount,
-                              flashSale: popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .flashSale!,
-                              isOffer: popularProductController
-                                  .popularModel
-                                  .value
-                                  .data?[index]
-                                  .isOffer!,
-                            ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
+                                },
+                                productImage:
+                                popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .cover!,
+                                title: popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .name,
+                                rating: popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .ratingStar
+                                    .toString(),
+                                currentPrice:
+                                popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .currencyPrice,
+                                discountPrice:
+                                popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .discountedPrice,
+                                textRating: popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .ratingStarCount,
+                                flashSale: popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .flashSale!,
+                                isOffer: popularProductController
+                                    .popularModel
+                                    .value
+                                    .data?[index]
+                                    .isOffer!,
+                              ),
+                          ],
+                        ),
+                      ],
+                    )
                     : const SizedBox(),
               ),
               SizedBox(height: 34.h),
